@@ -29,6 +29,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(session({secret: 'XXXXXX'}));
 
+app.use('/public', express.static(__dirname + '/public'));
+//app.use('/static', express.static(__dirname + '/public'));
+
 app.use(function(req, res, next) {
     if (typeof(req.session.list) == 'undefined') {
         req.session.list = [];
@@ -36,9 +39,9 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.get('/', function(req, res) {
+app.get(/^((?!\/public).)*$/, function(req, res) {
     db.find(function(error, articles) {
-        res.render('master', {articles: articles});
+        res.render('index', {articles: articles});
     })
 });
 
@@ -54,5 +57,4 @@ io.sockets.on('connection', function(socket) {
     //socket.emit('message', 'Client connected');
     //socket.broadcast.emit('message', 'Client connected');
 });
-
 //io.sockets.on('new')
