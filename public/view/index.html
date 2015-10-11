@@ -4,18 +4,23 @@
     <meta charset="UTF-8">
     <title></title>
     <base href="/">
+    <link rel="stylesheet" href="/public/assets/css/style.css"/>
 </head>
 <body>
-    <div ui-view="header"></div>
-    <div ui-view>
+    <canvas id="constellation"></canvas>
+    <div ui-view class="page" autoscroll="true">
 
     </div>
 
+    <script src="/public/lib/jquery/dist/jquery.min.js"></script>
     <script src="/public/lib/angular/angular.min.js"></script>
+    <script src="/public/lib/angular-animate/angular-animate.min.js"></script>
+    <script src="/public/lib/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="/public/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="/public/built/built.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
+        Constellation($('canvas')[0]).init();
         var socket = io.connect("http://192.168.1.19:8080");
         socket.on('message', function(message) {
             alert(message);

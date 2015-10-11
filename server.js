@@ -16,14 +16,6 @@
 
     //Connect to Mongoose
     mongoose.connect(db.url);
-    /*
-     var article = new articles({name:'Node.js'});
-     article.save(function(error) {
-     if (error) {
-     console.log("ERROR");
-     console.log(error);
-     }
-     });*/
 
     //Template Engine
     app.engine('html', handlebars());

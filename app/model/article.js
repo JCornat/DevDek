@@ -6,9 +6,27 @@ var Schema = mongoose.Schema;
 
 // Model Schema
 var ModelSchema = new Schema ({
-    name : {
+    slug : {
+        type: String
+    },
+    title : {
+        type: String
+    },
+    subtitle : {
+        type: String
+    },
+    thumbnail : {
+        type: String
+    },
+    banner : {
+        type: String
+    },
+    publishedAt : {
+        type: String
+    },
+    content : {
         type: String
     }
 });
 
-module.exports = mongoose.model('Test', ModelSchema);
+module.exports = mongoose.model('Article', ModelSchema);

@@ -4,7 +4,25 @@
         var Article = require('../model/article');
 
         app.post('/api/articles', function(req, res) {
-            console.log("CREATE ARTICLE")
+            var article = new Article(req.query);
+            article.save(function(error) {
+                if (error) {
+                    res.status(500).send({error: "Insert failed", status: 500});
+                } else {
+                    res.send({status: 200});
+                }
+            });
+        });
+
+        app.put('/api/articles/:slug', function(req, res) {
+            var article = req.query;
+            Article.findOneAndUpdate({slug:req.query.slug}, article, {upsert: true}, function(error, article) {
+                if (error) {
+                    res.status(500).send({error: "Update failed", status: 500});
+                } else {
+                    res.send({status: 200});
+                }
+            });
         });
 
         app.get('/api/articles', function(req, res) {
@@ -13,8 +31,9 @@
             });
         });
 
-        app.get('/api/articles/:id', function(req, res) {
-            Article.find(function(err, articles) {
+        app.get('/api/articles/:slug', function(req, res) {
+            var slug = req.params.slug;
+            Article.find({slug:slug}).exec(function(err, articles) {
                 res.send(articles);
             });
         });

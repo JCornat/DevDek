@@ -1,14 +1,33 @@
 (function() {
-    var app = angular.module('app', ['ui.router', 'app-article-service', 'app-article-controller']);
+    var app = angular.module('app', ['ui.router', 'app-article-service', 'app-article-controller', 'ngAnimate', 'ngSanitize']);
 
     app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
-        $urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('articles');
         $stateProvider
-            .state('home', {
+            .state('articles', {
                 url: '/',
                 views: {
-                    '': {templateUrl: '/public/view/article.html'},
-                    'header': {templateUrl: '/public/view/header.html'}
+                    '': {templateUrl: '/public/view/articles.html'},
+                    'header@articles': {templateUrl: '/public/view/header.html'}
+                }
+
+            })
+            .state('add-article', {
+                url: '/article/add',
+                views: {
+                    '': {templateUrl: '/public/view/article-form.html'}
+                }
+            })
+            .state('edit-article', {
+                url: '/article/:slug/edit',
+                views: {
+                    '': {templateUrl: '/public/view/article-form.html'}
+                }
+            })
+            .state('article', {
+                url: '/article/:slug',
+                views: {
+                    '': {templateUrl: '/public/view/article.html'}
                 }
             })
             .state('about', {

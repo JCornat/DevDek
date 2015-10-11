@@ -2,6 +2,7 @@ module.exports = function(grunt) {
 
     var base = 'public/controller/';
     var dest = 'public/built/';
+    var assets = 'public/assets/';
 
     grunt.initConfig({
         concat: {
@@ -9,8 +10,8 @@ module.exports = function(grunt) {
                 separator: ';'
             },
             dist: {
-                src: [base+'app.js', base+'article/*/*.js'],
-                dest: dest+'built.js'
+                src: [base + 'app.js', base + 'article/*/*.js', assets + 'js/*.js'],
+                dest: dest + 'built.js'
             }
         },
         uglify: {

@@ -1,8 +1,14 @@
-<div class="articles" ng-controller="ArticleCtrl as ctrl">
-    <div class="article" ng-repeat="article in ctrl.articles">
-        <img ng-src="{{article.thumbnail}}" alt=""/>
-        <p>{{article.name}}</p>
-        <p>{{article.subtitle}}</p>
-        <a href="">Lire plus</a>
+<section class="article" ng-controller="ArticleCtrl as ctrl">
+
+    <div class="header">
+        <img ng-src="{{ctrl.article.banner}}" style="max-width: 100%;" alt=""/>
+        <h1 ng-bind="ctrl.article.title"></h1>
+        <h2 ng-bind="ctrl.article.subtitle"></h2>
     </div>
-</div>
+
+    <div class="content">
+        <p ng-bind-html="ctrl.article.content"></p>
+        <p ng-bind="ctrl.article.publishedAt"></p>
+    </div>
+
+</section>

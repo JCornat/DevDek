@@ -7,15 +7,31 @@
             getAll: function(data) {
                 return $http({
                     url: '/api/articles',
-                    method: "GET",
+                    method: 'GET',
                     params: data
                 });
             },
-            encrypt: function(password, passphrase) {
-                return CryptoJS.AES.encrypt(password, passphrase).toString()
+            getOne: function(slug, data) {
+                return $http({
+                    url: '/api/articles/'+slug,
+                    method: 'GET',
+                    params: data
+                });
             },
-            decrypt: function(hash, passphrase) {
-                return CryptoJS.AES.decrypt(hash, passphrase).toString(CryptoJS.enc.Utf8);
+            addOne: function(data) {
+                console.log(data);
+                return $http({
+                    url: '/api/articles',
+                    method: 'POST',
+                    params: data
+                });
+            },
+            updateOne: function(slug, data) {
+                return $http({
+                    url: '/api/articles/'+slug,
+                    method: 'PUT',
+                    params: data
+                });
             }
         };
     }]);

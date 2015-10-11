@@ -1,0 +1,38 @@
+<section ng-controller="ArticleFormCtrl as ctrl">
+
+    <form novalidate>
+        <label>
+            Title :
+            <input type="text" name="title" ng-model="ctrl.article.title"/>
+        </label>
+        <label>
+            Slug :
+            <input type="text" name="slug" ng-model="ctrl.article.slug"/>
+        </label>
+        <label>
+            Subtitle :
+            <input type="text" name="subtitle" ng-model="ctrl.article.subtitle"/>
+        </label>
+        <label>
+            Thumbnail URL :
+            <input type="text" name="thumbnail" ng-model="ctrl.article.thumbnail"/>
+        </label>
+        <label>
+            Banner URL :
+            <input type="text" name="banner" ng-model="ctrl.article.banner"/>
+        </label>
+        <label>
+            Published at :
+            <input type="datetime" name="publishedAt" ng-model="ctrl.article.publishedAt"/>
+        </label>
+        <label>
+            Content :
+            <textarea name="content" ng-model="ctrl.article.content" style="max-width: 100%"></textarea>
+        </label>
+        <label>
+            Submit :
+            <input type="submit" ng-click="ctrl.submit()"/>
+        </label>
+    </form>
+
+</section>
