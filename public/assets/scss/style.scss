@@ -6,6 +6,14 @@ $xsmallWidth: 320px;
 
 $columnWidth: 700px;
 
+$h1: 30px;
+$h2: 24px;
+
+$green: #4CAF50;
+$grey: #9E9E9E;
+$blue: #2196F3;
+$deepBlue: #01579B;
+
 * {
   box-sizing: border-box;
 }
@@ -20,8 +28,30 @@ h1, h2, h3, h4, h5, h6, p {
   margin-bottom: 0;
 }
 
-h1, h2, h3 , h4, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-size: 5em;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 3.5em;
+  font-weight: 300;
+  line-height: 50px;
+}
+
+h3 {
+  font-size: $h1;
+  font-weight: 300;
+  line-height: 30px;
+}
+
+h4 {
+  font-size: $h2;
+  font-weight: 300;
 }
 
 p, a {
@@ -52,7 +82,7 @@ p, a {
     margin-right: auto;
   }
   .article {
-    .content {
+    .content, .header .title-container .title {
       width: $columnWidth;
       margin-left: auto;
       margin-right: auto;
@@ -65,7 +95,7 @@ p, a {
     width: 100%;
   }
   .article {
-    .content {
+    .content, .header.title-container {
       padding-left: 20px;
       padding-right: 20px;
       width: 100%;
@@ -87,18 +117,19 @@ p, a {
     background-size: cover;
     background-position: center center;
     color: #fff;
+    margin-bottom: 3em;
 
     .title-container {
+      background-color: rgba(0, 0, 0, .3);
       display: table-cell;
       vertical-align: bottom;
 
       .title {
+        text-align: left;
         padding-bottom: 50px;
-        h1 {
-          font-weight: 700;
-        }
+
         h2 {
-          font-weight: 600;
+          margin-bottom: 0.2em;
         }
       }
     }
@@ -109,26 +140,68 @@ p, a {
   }
 }
 
+.articles {
+  .article {
+    text-align: left;
+    margin-bottom: 2em;
+
+    .thumbnail {
+      box-shadow: 0 1px 1.5px 0 rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.24);
+      transition: box-shadow linear 0.3s;
+      &:hover {
+        box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 5px 0 rgba(0,0,0,.23);
+        cursor: pointer;
+      }
+    }
+
+    .title {
+      &:hover {
+        cursor: pointer;
+      }
+      font-size: 26px;
+      color: #000;
+      font-weight: 300;
+    }
+
+    .subtitle {
+      &:hover {
+        cursor: pointer;
+      }
+      font-size: 17px;
+      color: $grey;
+      font-weight: 300;
+    }
+
+    .link {
+      margin-top: 1em;
+      a {
+        color: $blue;
+        text-decoration: none;
+
+        &:hover {
+          color: $deepBlue;
+          text-decoration: underline;
+        }
+      }
+      //float: right;
+    }
+  }
+}
+
 .logo {
   padding-top: 2em;
+  margin-bottom: 3em;
   h1 {
     font-family: 'Raleway', sans-serif;
     font-weight: 100;
     letter-spacing: 70px;
-    padding-left: 35px;
+    padding-left: 50px;
+    font-size: 5em;
   }
 
   h2 {
-    font-weight: 300;
+    font-size: 2em;
   }
-}
-
-.page h1 {
-  font-size: 60px;
-}
-
-.page a {
-  margin-top: 50px;
 }
 
 #about {

@@ -6,33 +6,25 @@
     <base href="/">
     <link rel="stylesheet" href="/public/assets/css/style.css"/>
     <link href="http://fonts.googleapis.com/css?family=Raleway:400,100,200,300" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,800,300,600|Roboto:400,300,100,500,700,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,800,300,600|Roboto:400,300,100,500,700,900'
+          rel='stylesheet' type='text/css'>
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi"/>
 </head>
 <body>
-    <canvas id="constellation"></canvas>
-    <div ui-view class="page" autoscroll="true">
+<canvas id="constellation"></canvas>
+<div ui-view class="page" autoscroll="true">
 
-    </div>
+</div>
 
-    <script src="/public/lib/jquery/dist/jquery.min.js"></script>
-    <script src="/public/lib/angular/angular.min.js"></script>
-    <script src="/public/lib/angular-animate/angular-animate.min.js"></script>
-    <script src="/public/lib/angular-sanitize/angular-sanitize.min.js"></script>
-    <script src="/public/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="/public/built/built.js"></script>
-    <script>
-        Constellation($('canvas')[0]).init();
-
-        (function(){
-            function resize() {
-                $('.header').css({height: window.innerHeight+'px'})
-            }
-            window.addEventListener('resize', function(){
-                resize();
-            }, true);
-            console.log("WOW");
-            resize();
-        })();
-    </script>
+<script src="/public/lib/jquery/dist/jquery.min.js"></script>
+<script src="/public/lib/angular/angular.min.js"></script>
+<script src="/public/lib/angular-animate/angular-animate.min.js"></script>
+<script src="/public/lib/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="/public/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="/public/built/built.js"></script>
+<script>
+    Constellation($('canvas')[0]).init();
+</script>
 </body>
 </html>

@@ -32,6 +32,12 @@
                     method: 'PUT',
                     params: data
                 });
+            },
+            removeOne: function(slug) {
+                return $http({
+                    url: '/api/articles/'+slug,
+                    method: 'DELETE'
+                });
             }
         };
     }]);

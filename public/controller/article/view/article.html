@@ -1,0 +1,19 @@
+<section class="article" ng-controller="ArticleCtrl as ctrl">
+
+    <div class="header" header="{{ctrl.article.banner}}" ng-style="resize()">
+        <div class="title-container">
+            <div class="title">
+                <h2 ng-bind="ctrl.article.title"></h2>
+                <!--<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque eos facilis, quibusdam quisquam recusandae sed?</h3>-->
+                <h3 ng-bind="ctrl.article.subtitle"></h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <p ng-bind-html="ctrl.article.content"></p>
+
+        <p ng-bind="ctrl.article.publishedAt"></p>
+    </div>
+
+</section>
