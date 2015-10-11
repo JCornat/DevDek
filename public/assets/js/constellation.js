@@ -4,10 +4,10 @@ function Constellation(canvas) {
 
     _this.config = {
         star: {
-            color: 'rgba(0, 0, 0, 0.5)'
+            color: 'rgba(0, 0, 0, 0.3)'
         },
         line: {
-            color: 'rgba(0, 0, 0, .2)',
+            color: 'rgba(0, 0, 0, .15)',
             width: 0.2
         },
         position: {

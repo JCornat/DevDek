@@ -4,6 +4,8 @@ $mediumWidth: 768px;
 $smallWidth: 480px;
 $xsmallWidth: 320px;
 
+$columnWidth: 700px;
+
 * {
   box-sizing: border-box;
 }
@@ -11,6 +13,20 @@ $xsmallWidth: 320px;
 body, html {
   padding: 0;
   margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h1, h2, h3 , h4, h5, h6 {
+  font-family: 'Open Sans', sans-serif;
+}
+
+p, a {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
 }
 
 #constellation {
@@ -31,13 +47,13 @@ body, html {
 
 @media screen and (min-width: $mediumWidth) {
   .articles {
-    width: 700px;
+    width: $columnWidth;
     margin-left: auto;
     margin-right: auto;
   }
   .article {
     .content {
-      width: 700px;
+      width: $columnWidth;
       margin-left: auto;
       margin-right: auto;
     }
@@ -65,11 +81,45 @@ body, html {
 
 .article {
   .header {
+    display: table;
+    vertical-align: middle;
     width: 100%;
+    background-size: cover;
+    background-position: center center;
+    color: #fff;
+
+    .title-container {
+      display: table-cell;
+      vertical-align: bottom;
+
+      .title {
+        padding-bottom: 50px;
+        h1 {
+          font-weight: 700;
+        }
+        h2 {
+          font-weight: 600;
+        }
+      }
+    }
   }
 
   .content {
     text-align: justify;
+  }
+}
+
+.logo {
+  padding-top: 2em;
+  h1 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    letter-spacing: 70px;
+    padding-left: 35px;
+  }
+
+  h2 {
+    font-weight: 300;
   }
 }
 
@@ -92,7 +142,6 @@ body, html {
 /* PAGES
 ============================================================================= */
 .page {
-  color: #00907c;
   text-align: center;
 }
 

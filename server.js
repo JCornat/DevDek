@@ -43,13 +43,4 @@
     require(__dirname + '/app/route/api')(app);
     require(__dirname + '/app/route/route')(app);
 
-    //socket.io
-    var io = require('socket.io').listen(server);
-    io.sockets.on('connection', function (socket) {
-        //socket.emit('message', 'Client connected');
-        //socket.broadcast.emit('message', 'Client connected');
-        //io.sockets.connected[socketid].emit();
-    });
-    //io.sockets.on('new')
-
 })();
