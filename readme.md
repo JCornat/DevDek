@@ -1,4 +1,4 @@
-# DEVDEK JS
+# DevDek
 
 ## Author 
 - Jacques Cornat

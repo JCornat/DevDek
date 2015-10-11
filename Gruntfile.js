@@ -1,13 +1,16 @@
 module.exports = function(grunt) {
 
+    var base = 'public/controller/';
+    var dest = 'public/built/';
+
     grunt.initConfig({
         concat: {
             options: {
                 separator: ';'
             },
             dist: {
-                src: ['app/app.js'],
-                dest: 'app/Built/built.js'
+                src: [base+'app.js', base+'article/*/*.js'],
+                dest: dest+'built.js'
             }
         },
         uglify: {
@@ -15,8 +18,8 @@ module.exports = function(grunt) {
                 separator: ';'
             },
             dist: {
-                src: ['<%= concat.dist.dest %>'],
-                dest: 'app/Built/built.js'
+                src: dest+'built.js',
+                dest: dest+'built.js'
             }
         },
         watch: {
@@ -37,3 +40,5 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['watch']);
 
 };
+
+//sudo npm i grunt grunt-cli grunt-contrib-concat grunt-contrib-uglify grunt-contrib-watch

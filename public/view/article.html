@@ -1,11 +1,5 @@
-<div class="title">
-    <h1 class="hidden-xs">DEVDEK</h1>
-    <h1 class="visible-xs">DEVDEK</h1>
-    <h2>Le blog TL;DR</h2>
-</div>
-
-<div class="articles">
-    <div class="article" ng-repeat="article in articles">
+<div class="articles" ng-controller="ArticleCtrl as ctrl">
+    <div class="article" ng-repeat="article in ctrl.articles">
         <img ng-src="{{article.thumbnail}}" alt=""/>
         <p>{{article.name}}</p>
         <p>{{article.subtitle}}</p>
