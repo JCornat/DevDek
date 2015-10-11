@@ -7,24 +7,32 @@
             .success(function(data) {
                 self.articles = data;
             });
-
     }]);
 
-    app.controller('ArticleCtrl', ['apiService', '$stateParams', function (apiService, $stateParams) {
+    app.controller('ArticleCtrl', ['apiService', '$stateParams', '$state', function (apiService, $stateParams, $state) {
         var self = this;
+        if ($stateParams.slug.trim() == "") {
+            $state.go('articles');
+        }
         apiService.getOne($stateParams.slug)
             .success(function(data) {
-                self.article = data[0];
+                self.article = data;
+            })
+            .error(function(e) {
+                $state.go('404');
             });
     }]);
 
     app.controller('ArticleFormCtrl', ['$state', 'apiService', '$stateParams', function ($state, apiService, $stateParams) {
         var self = this;
-        self.slug =$stateParams.slug;
+        self.slug = $stateParams.slug;
         if (self.slug) {
             apiService.getOne($stateParams.slug)
                 .success(function(data) {
-                    self.article = data[0];
+                    self.article = data;
+                })
+                .error(function(e) {
+                    $state.go('404');
                 });
         } else {
             self.article = {};

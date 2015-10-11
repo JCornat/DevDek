@@ -10,7 +10,7 @@ module.exports = function(grunt) {
                 separator: ';'
             },
             dist: {
-                src: [base + 'app.js', base + 'article/*/*.js', assets + 'js/*.js'],
+                src: [base + 'app.js', base + '*/*/*.js', assets + 'js/*.js'],
                 dest: dest + 'built.js'
             }
         },

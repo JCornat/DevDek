@@ -16,10 +16,11 @@
 
         app.put('/api/articles/:slug', function (req, res) {
             var article = req.query;
-            Article.findOneAndUpdate({slug: req.query.slug}, article, {upsert: true}, function (error, article) {
+            Article.findOneAndUpdate({slug: req.params.slug}, article, {upsert: true}, function (error) {
                 if (error) {
                     res.status(500).send({error: "Update failed", status: 500});
                 } else {
+                    console.log(article.slug);
                     res.send({status: 200, slug: article.slug});
                 }
             });
@@ -33,6 +34,7 @@
                     res.send({status: 200});
                 }
             });
+
         });
 
         app.get('/api/articles', function (req, res) {
@@ -42,9 +44,12 @@
         });
 
         app.get('/api/articles/:slug', function (req, res) {
-            var slug = req.params.slug;
-            Article.find({slug: slug}).exec(function (err, articles) {
-                res.send(articles);
+            Article.where({slug: req.params.slug}).findOne(function (err, articles) {
+                if (articles) {
+                    res.send(articles);
+                } else {
+                    res.status(404).send({error: "Article not found", status: 404});
+                }
             });
         });
     }

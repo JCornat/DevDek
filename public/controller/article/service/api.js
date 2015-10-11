@@ -11,11 +11,10 @@
                     params: data
                 });
             },
-            getOne: function(slug, data) {
+            getOne: function(slug) {
                 return $http({
                     url: '/api/articles/'+slug,
-                    method: 'GET',
-                    params: data
+                    method: 'GET'
                 });
             },
             addOne: function(data) {

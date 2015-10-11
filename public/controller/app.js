@@ -1,8 +1,7 @@
 (function () {
-    var app = angular.module('app', ['ui.router', 'app-article-service', 'app-article-controller', 'ngAnimate', 'ngSanitize', 'app-article-directive']);
+    var app = angular.module('app', ['ui.router', 'app-article-service', 'app-article-controller', 'ngAnimate', 'ngSanitize', 'app-article-directive', 'app-global-controller']);
 
     app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
-        $urlRouterProvider.otherwise('articles');
         $stateProvider
             .state('articles', {
                 url: '/',
@@ -10,7 +9,6 @@
                     '': {templateUrl: '/public/controller/article/view/articles.html'},
                     'header@articles': {templateUrl: '/public/view/header.html'}
                 }
-
             })
             .state('add-article', {
                 url: '/article/add',
@@ -30,9 +28,13 @@
                     '': {templateUrl: '/public/controller/article/view/article.html'}
                 }
             })
-            .state('about', {
-                // we'll get to this in a bit
+            .state('404', {
+                url: '/404',
+                views: {
+                    '': {templateUrl: '/public/controller/global/view/404.html'}
+                }
             });
+        $urlRouterProvider.otherwise('404');
         $locationProvider.html5Mode(true);
     }]);
 })();
