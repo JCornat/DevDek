@@ -9,6 +9,7 @@
     var session = require('cookie-session');
     var mongoose = require('mongoose');
     var db = require(__dirname + '/config/db');
+    var cookie = require(__dirname + '/config/cookie');
 
     //Launch server
     var app = express();
@@ -43,4 +44,14 @@
     require(__dirname + '/app/route/api')(app);
     require(__dirname + '/app/route/route')(app);
 
+    //Authentication
+    var passport = require('passport');
+    var expressSession = require('express-session');
+    app.use(expressSession({secret: cookie.cookie, resave: true, saveUninitialized: true}));
+    app.use(passport.initialize());
+    app.use(passport.session());
+
+    // Initialize Passport
+    var initPassport = require(__dirname + '/app/passport/init');
+    initPassport(passport);
 })();

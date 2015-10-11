@@ -5,34 +5,46 @@
             Title :
             <input type="text" name="title" ng-model="ctrl.article.title"/>
         </label>
+        <br/>
         <label>
             Slug :
             <input type="text" name="slug" ng-model="ctrl.article.slug"/>
         </label>
+        <br/>
         <label>
             Subtitle :
             <input type="text" name="subtitle" ng-model="ctrl.article.subtitle"/>
         </label>
+        <br/>
         <label>
             Thumbnail URL :
             <input type="text" name="thumbnail" ng-model="ctrl.article.thumbnail"/>
         </label>
+        <br/>
         <label>
             Banner URL :
             <input type="text" name="banner" ng-model="ctrl.article.banner"/>
         </label>
+        <br/>
         <label>
             Published at :
             <input type="datetime" name="publishedAt" ng-model="ctrl.article.publishedAt"/>
         </label>
+        <br/>
         <label>
             Content :
             <textarea name="content" ng-model="ctrl.article.content" style="max-width: 100%"></textarea>
         </label>
+        <br/>
         <label>
             Submit :
             <input type="submit" ng-click="ctrl.submit()"/>
         </label>
+
+
+        <br/>
+        <p>Aperçu :</p>
+        <div ng-bind-html="ctrl.article.content"></div>
     </form>
 
     <button ng-click="ctrl.delete()" ng-show="ctrl.slug">Delete</button>
