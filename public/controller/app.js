@@ -6,12 +6,13 @@
         $stateProvider
             .state('home', {
                 url: '/',
-                templateUrl: '/public/view/article.html'
+                templateUrl: '/public/view/article.html',
+                controller: 'homeCtrl'
             })
             .state('about', {
                 // we'll get to this in a bit
             });
         $locationProvider.html5Mode(true);
-
     }]);
+
 })();
