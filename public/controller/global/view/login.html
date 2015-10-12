@@ -1,4 +1,7 @@
 <section class="login" ng-controller="LoginCtrl as ctrl">
+    <div class="error">
+        <p ng-bind="ctrl.error.error"></p>
+    </div>
     <form novalidate>
         <input type="text" ng-model="ctrl.user.username"/>
         <input type="text" ng-model="ctrl.user.password"/>

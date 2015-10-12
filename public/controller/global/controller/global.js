@@ -5,14 +5,21 @@
         var self = this;
     });
 
-    app.controller('LoginCtrl', ['globalService', function(globalService) {
+    app.controller('LoginCtrl', ['globalService', '$state', function(globalService, $state) {
         var self = this;
+
+        globalService.isLogged()
+            .success(function() {
+                $state.go('articles');
+            });
+
         self.login = function() {
             globalService.login(self.user)
                 .success(function(data) {
-                    console.log("data");
+                    $state.go('articles');
                 })
                 .error(function(error) {
+                    self.error = error;
                     console.log("Error");
                     console.log(error);
                 });

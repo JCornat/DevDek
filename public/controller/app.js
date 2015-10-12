@@ -1,7 +1,5 @@
 (function () {
     var app = angular.module('app', ['ui.router', 'app.article.service', 'app.article.controller', 'ngAnimate', 'ngSanitize', 'app.article.directive', 'app.global.controller', 'app.global.service']);
-
-
     app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
         $stateProvider
             .state('articles', {

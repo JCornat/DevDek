@@ -10,6 +10,18 @@
                     method: 'POST',
                     params: data
                 });
+            },
+            isLogged: function() {
+                return $http({
+                    url: '/api/logged',
+                    method: 'GET'
+                });
+            },
+            isAdmin: function() {
+                return $http({
+                    url: '/api/admin',
+                    method: 'GET'
+                });
             }
         };
     }]);

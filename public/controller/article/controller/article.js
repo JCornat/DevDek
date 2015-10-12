@@ -1,5 +1,5 @@
 (function() {
-    var app = angular.module('app.article.controller', ['app.article.service']);
+    var app = angular.module('app.article.controller', ['app.article.service', 'app.global.service']);
 
     app.controller('ArticlesCtrl', ['apiService', function (apiService) {
         var self = this;
@@ -23,9 +23,15 @@
             });
     }]);
 
-    app.controller('ArticleFormCtrl', ['$state', 'apiService', '$stateParams', function ($state, apiService, $stateParams) {
+    app.controller('ArticleFormCtrl', ['$state', 'apiService', '$stateParams', 'globalService', function ($state, apiService, $stateParams, globalService) {
         var self = this;
         self.slug = $stateParams.slug;
+
+        globalService.isAdmin()
+            .error(function() {
+                $state.go('articles');
+            });
+
         if (self.slug) {
             apiService.getOne($stateParams.slug)
                 .success(function(data) {

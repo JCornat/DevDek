@@ -37,7 +37,26 @@
         var User = require('../model/user');
         var bcrypt = require('bcrypt-nodejs');
 
-        app.post('/api/articles', function (req, res) {
+        //Get all articles
+        app.get('/api/articles', function (req, res) {
+            Article.find(function (err, articles) {
+                res.send(articles);
+            });
+        });
+
+        //Get one article
+        app.get('/api/articles/:slug', function (req, res) {
+            Article.where({slug: req.params.slug}).findOne(function (err, articles) {
+                if (articles) {
+                    res.send(articles);
+                } else {
+                    res.status(404).send({error: "Article not found", status: 404});
+                }
+            });
+        });
+
+        //Add article
+        app.post('/api/articles', isAuthenticated, isAdmin, function (req, res) {
             var article = new Article(req.query);
             article.save(function (error) {
                 if (error) {
@@ -48,6 +67,7 @@
             });
         });
 
+        //Update article
         app.put('/api/articles/:slug', isAuthenticated, isAdmin, function (req, res) {
             var article = req.query;
             Article.findOneAndUpdate({slug: req.params.slug}, article, {upsert: true}, function (error) {
@@ -60,7 +80,8 @@
             });
         });
 
-        app.delete('/api/articles/:slug', function (req, res) {
+        //Delete article
+        app.delete('/api/articles/:slug', isAuthenticated, isAdmin, function (req, res) {
             Article.findOneAndRemove({slug: req.params.slug}, function (error, article) {
                 if (error) {
                     res.status(500).send({error: "Remove failed", status: 500});
@@ -71,35 +92,20 @@
 
         });
 
-        app.get('/api/articles', function (req, res) {
-            Article.find(function (err, articles) {
-                res.send(articles);
-            });
-        });
-
-        app.get('/api/articles/:slug', function (req, res) {
-            Article.where({slug: req.params.slug}).findOne(function (err, articles) {
-                if (articles) {
-                    res.send(articles);
-                } else {
-                    res.status(404).send({error: "Article not found", status: 404});
-                }
-            });
-        });
-
+        //Check if logged
         app.get('/api/logged', isAuthenticated, function(req, res) {
             return res.send({status: 200});
         });
 
+        //Check if admin
         app.get('/api/admin', isAuthenticated, isAdmin, function(req, res) {
             return res.send({status: 200});
         });
 
+        //Login
         app.post('/login', function(req, res) {
             var username = req.query.username;
             var password = req.query.password;
-
-            //console.log(bcrypt.hashSync("aaaaa"));
 
             User.findOne({username: username}, function(err, user) {
                 if (!user || err) {
@@ -108,41 +114,13 @@
                 if (!bcrypt.compareSync(password, user.password)) {
                     return res.status(500).send({error: "Wrong password", status: 500});
                 }
-
                 req.session.logged = true;
                 req.session.username = username;
-
                 if (user.admin) {
                     req.session.admin = true;
                 }
-
                 res.send({status: 200});
             });
-
-            //function(req, username, password, done) {
-            //    // check in mongo if a user with username exists or not
-            //    User.findOne({ 'username' :  username },
-            //        function(err, user) {
-            //            // In case of any error, return using the done method
-            //            if (err)
-            //                return done(err);
-            //            // Username does not exist, log the error and redirect back
-            //            if (!user){
-            //                console.log('User Not Found with username '+username);
-            //                return done(null, false, req.flash('message', 'User Not found.'));
-            //            }
-            //            // User exists but wrong password, log the error
-            //            if (!isValidPassword(user, password)){
-            //                console.log('Invalid Password');
-            //                return done(null, false, req.flash('message', 'Invalid Password')); // redirect back to login page
-            //            }
-            //            // User and password both match, return user from done method
-            //            // which will be treated like success
-            //            return done(null, user);
-            //        }
-            //    );
-            //
-            //})
         });
     }
 })();
