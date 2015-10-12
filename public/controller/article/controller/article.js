@@ -41,7 +41,9 @@
                     $state.go('404');
                 });
         } else {
-            self.article = {};
+            self.article = {
+                publishedAt: Date.now()
+            };
         }
 
         this.submit = function() {

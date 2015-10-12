@@ -7,7 +7,7 @@ var ModelSchema = new Schema ({
     subtitle: String,
     thumbnail: String,
     banner: String,
-    publishedAt: String,
+    publishedAt: { type : Date, default: Date.now },
     content: String
 });
 

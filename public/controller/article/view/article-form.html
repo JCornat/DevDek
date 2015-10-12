@@ -28,7 +28,7 @@
         <br/>
         <label>
             Published at :
-            <input type="datetime" name="publishedAt" ng-model="ctrl.article.publishedAt"/>
+            <input type="text" name="publishedAt" ng-model="ctrl.article.publishedAt"/>
         </label>
         <br/>
         <label>
@@ -39,14 +39,32 @@
         <label>
             Submit :
             <input type="submit" ng-click="ctrl.submit()"/>
+            <button ng-click="ctrl.delete()" ng-show="ctrl.slug">Delete</button>
         </label>
 
 
         <br/>
         <p>Aperçu :</p>
-        <div ng-bind-html="ctrl.article.content"></div>
+        <section class="article">
+
+            <div class="header" header="{{ctrl.article.banner}}" ng-style="resize()">
+                <div class="title-container">
+                    <div class="title">
+                        <h2 ng-bind="ctrl.article.title"></h2>
+                        <!--<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque eos facilis, quibusdam quisquam recusandae sed?</h3>-->
+                        <h3 ng-bind="ctrl.article.subtitle"></h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content">
+                <p ng-bind-html="ctrl.article.content"></p>
+
+                <p ng-bind="ctrl.article.publishedAt"></p>
+            </div>
+
+        </section>
     </form>
 
-    <button ng-click="ctrl.delete()" ng-show="ctrl.slug">Delete</button>
 
 </section>

@@ -12,8 +12,7 @@
 
     <div class="content">
         <p ng-bind-html="ctrl.article.content"></p>
-
-        <p ng-bind="ctrl.article.publishedAt"></p>
+        <p>{{ctrl.article.publishedAt | utc | date: "dd MMM yyyy"}}</p>
     </div>
 
 </section>
