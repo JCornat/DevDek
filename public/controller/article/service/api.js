@@ -1,6 +1,6 @@
 (function() {
 
-    var app = angular.module('app-article-service', []);
+    var app = angular.module('app.article.service', []);
 
     app.factory('apiService', ['$http', function($http) {
         return {
@@ -18,7 +18,6 @@
                 });
             },
             addOne: function(data) {
-                console.log(data);
                 return $http({
                     url: '/api/articles',
                     method: 'POST',

@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ModelSchema = new Schema ({
-    slug: String,
-    title: String,
+    slug: {type:String, require:true},
+    title: {type:String, require:true},
     subtitle: String,
     thumbnail: String,
     banner: String,

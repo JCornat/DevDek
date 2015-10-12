@@ -1,5 +1,5 @@
 (function () {
-    var app = angular.module('app', ['ui.router', 'app-article-service', 'app-article-controller', 'ngAnimate', 'ngSanitize', 'app-article-directive', 'app-global-controller']);
+    var app = angular.module('app', ['ui.router', 'app.article.service', 'app.article.controller', 'ngAnimate', 'ngSanitize', 'app.article.directive', 'app.global.controller', 'app.global.service']);
 
 
     app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -27,6 +27,12 @@
                 url: '/article/:slug',
                 views: {
                     '': {templateUrl: '/public/controller/article/view/article.html'}
+                }
+            })
+            .state('login', {
+                url: '/login',
+                views: {
+                    '': {templateUrl: '/public/controller/global/view/login.html'}
                 }
             })
             .state('404', {

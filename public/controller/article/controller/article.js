@@ -1,5 +1,5 @@
 (function() {
-    var app = angular.module('app-article-controller', ['app-article-service']);
+    var app = angular.module('app.article.controller', ['app.article.service']);
 
     app.controller('ArticlesCtrl', ['apiService', function (apiService) {
         var self = this;

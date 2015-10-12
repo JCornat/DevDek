@@ -45,13 +45,10 @@
     require(__dirname + '/app/route/route')(app);
 
     //Authentication
-    var passport = require('passport');
+    //var passport = require('passport');
     var expressSession = require('express-session');
-    app.use(expressSession({secret: cookie.cookie, resave: true, saveUninitialized: true}));
-    app.use(passport.initialize());
-    app.use(passport.session());
+    app.use(expressSession({secret: cookie.cookie, resave: false, saveUninitialized: false}));
+    //app.use(passport.initialize());
+    //app.use(passport.session());
 
-    // Initialize Passport
-    var initPassport = require(__dirname + '/app/passport/init');
-    initPassport(passport);
 })();
