@@ -39,7 +39,7 @@
 
         //Get all articles
         app.get('/api/articles', function (req, res) {
-            Article.find(function (err, articles) {
+            Article.find().sort({publishedAt: 'desc'}).limit(10).exec(function (err, articles) {
                 res.send(articles);
             });
         });

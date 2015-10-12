@@ -1,18 +1,48 @@
 <section class="article" ng-controller="ArticleCtrl as ctrl">
 
+    <div class="column">
+        <div class="title">
+            <div class="logo-mini">
+                <a class="back" href ui-sref="articles()">Retour</a>
+                <h3 class="devdek" ui-sref="articles()">DEVDEK</h3>
+            </div>
+        </div>
+    </div>
+
     <div class="header" header="{{ctrl.article.banner}}" ng-style="resize()">
         <div class="title-container">
             <div class="title">
                 <h2 ng-bind="ctrl.article.title"></h2>
-                <!--<h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque eos facilis, quibusdam quisquam recusandae sed?</h3>-->
                 <h3 ng-bind="ctrl.article.subtitle"></h3>
             </div>
         </div>
     </div>
 
-    <div class="content">
-        <p ng-bind-html="ctrl.article.content"></p>
-        <p>{{ctrl.article.publishedAt | utc | date: "dd MMM yyyy"}}</p>
+    <div class="column">
+        <div class="content">
+            <p ng-bind-html="ctrl.article.content"></p>
+        </div>
+
+        <div class="date">
+            <p>Publié le {{ctrl.article.publishedAt | utc | date: "dd MMM yyyy"}}</p>
+        </div>
+
+        <div class="author">
+            <div class="row">
+                <div class="column-3">
+                    <div class="avatar">
+                        <img src="http://image.noelshack.com/fichiers/2015/04/1421741724-ok.jpg" alt=""/>
+                    </div>
+                </div>
+                <div class="column-9">
+                    <p>Une question ? Envoyez moi un mail à cornat.jacques@gmail.com :)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer" style="display: block;">
+            <p>© 2015, Jacques Cornat</p>
+        </div>
     </div>
 
 </section>

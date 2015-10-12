@@ -16,10 +16,18 @@
                     scope.windowWidth = newValue.width;
 
                     scope.resize = function (offsetH) {
-                        return {
-                            'height': newValue.height + 'px',
-                            'background-image': 'url('+attributes["header"]+')'
-                        };
+                        if (newValue.width < 768) {
+                            return {
+                                'height': 350 + 'px',
+                                'background-image': 'url('+attributes["header"]+')'
+                            };
+                        } else {
+                            return {
+                                'height': newValue.width / 2.25 + 'px',
+                                'background-image': 'url('+attributes["header"]+')'
+                            };
+                        }
+
                     };
                 }, true);
 
