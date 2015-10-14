@@ -1,4 +1,6 @@
 @import "compass/utilities/general/clearfix";
+@import "compass/css3";
+@import "grid";
 
 $xlargeWidth: 1200px;
 $largeWidth: 992px;
@@ -70,29 +72,49 @@ p, a {
   bottom: 0;
 }
 
-@media screen and (min-width: $largeWidth) {
+@media screen and (max-width: $sm) {
 
-}
+  .logo {
+    padding-top: 4rem;
+    margin-bottom: 2rem;
 
-@media screen and (max-width: $largeWidth - 1px) {
-}
+    h1 {
+      $size: 2.5rem;
+      letter-spacing: calc(#{$size} / 1.5);
+      padding-left: calc(#{$size}/1.5);
+      font-size: $size;
+      padding-bottom: 1rem;
+    }
 
-@media screen and (min-width: $mediumWidth) {
-  .articles {
-    width: $columnWidth;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .article {
-    .column, .header .title-container .title {
-      width: $columnWidth;
-      margin-left: auto;
-      margin-right: auto;
+    h2 {
+      font-size: 1.2rem;
     }
   }
 }
 
-@media screen and (max-width: $mediumWidth - 1px) {
+@media screen and (min-width: $sm) and (max-width: $md) {
+
+  .logo {
+    padding-top: 6em;
+    margin-bottom: 4em;
+
+    h1 {
+      $size: 3.5rem;
+      letter-spacing: calc(#{$size} / 1.2);
+      padding-left: calc(#{$size}/1.5);
+      font-size: $size;
+      padding-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+  }
+
+
+}
+
+@media screen and (max-width: $md) {
   .articles {
     width: 100%;
   }
@@ -105,10 +127,43 @@ p, a {
   }
 }
 
-@media screen and (min-width: $smallWidth) {
+@media screen and (min-width: $md) and (max-width: $lg) {
+
+  .logo {
+    padding-top: 6em;
+    margin-bottom: 4em;
+
+    h1 {
+      letter-spacing: calc(4rem/1.15);
+      padding-left: calc(4rem/1.20);
+      font-size: 4rem;
+      padding-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+
 }
 
-@media screen and (max-width: $smallWidth - 1px) {
+@media screen and (min-width: $lg) {
+
+  .logo {
+    padding-top: 6em;
+    margin-bottom: 4em;
+
+    h1 {
+      letter-spacing: calc(5rem/1.15);
+      padding-left: calc(5rem/1.20);
+      font-size: 5rem;
+      padding-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+    }
+  }
 }
 
 .article {
@@ -156,6 +211,24 @@ p, a {
     }
   }
 }
+
+
+
+.logo {
+  text-align: center;
+
+  h1 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+  }
+
+  h2 {
+    color: $grey;
+  }
+}
+
+
+
 /*
 .column-3 {
   width: 100/12*3%;
@@ -169,10 +242,6 @@ p, a {
   display: block;
 }*/
 
-.row {
-  width: 100%;
-  display: block;
-}
 
 .avatar {
   text-align: center;
@@ -225,26 +294,6 @@ p, a {
       }
       //float: right;
     }
-  }
-}
-
-.logo {
-  text-align: center;
-  padding-top: 6em;
-  margin-bottom: 4em;
-
-  h1 {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 100;
-    letter-spacing: 70px;
-    padding-left: 50px;
-    font-size: 5em;
-    padding-bottom: 2rem;
-  }
-
-  h2 {
-    font-size: 1.7em;
-    color: $grey;
   }
 }
 
@@ -442,62 +491,15 @@ p, a {
   }
 }
 
-$grid-breakpoints: (
-  // Extra small screen / phone
-        xs: 0,
-  // Small screen / phone
-        sm: 34em,
-  // Medium screen / tablet
-        md: 48em,
-  // Large screen / desktop
-        lg: 62em,
-  // Extra large screen / wide desktop
-        xl: 75em
-) !default;
-
-$grid-columns:      12;
-$grid-gutter-width: 1.5rem;
-
-
-// Creates a wrapper for a series of columns
-@mixin make-row($gutter: $grid-gutter-width) {
-  margin-left:  ($gutter / -2);
-  margin-right: ($gutter / -2);
-  @include clearfix();
-}
-
-// Make the element grid-ready (applying everything but the width)
-@mixin make-col($gutter: $grid-gutter-width) {
-  position: relative;
-  float: left;
-  min-height: 1px;
-  padding-left:  ($gutter / 2);
-  padding-right: ($gutter / 2);
-}
-
-// Set a width (to be used in or out of media queries)
-@mixin make-col-span($columns) {
-  width: percentage(($columns / $grid-columns));
-}
-
-// Get fancy by offsetting, or changing the sort order
-@mixin make-col-offset($columns) {
-  margin-left: percentage(($columns / $grid-columns));
-}
-@mixin make-col-push($columns) {
-  left: percentage(($columns / $grid-columns));
-}
-@mixin make-col-pull($columns) {
-  right: percentage(($columns / $grid-columns));
-}
-
 .container {
-  max-width: 60em;
-  //@include make-container();
+  //max-width: 40em;
+
+  @include make-container();
 }
 .row {
   @include make-row();
 }
+
 .content-main {
   @include make-col();
 
@@ -519,12 +521,9 @@ $grid-gutter-width: 1.5rem;
   }
 }
 
-.column-3 {
-  @include make-col();
-  @include make-col-span(3);
-}
-
-.column-9 {
-  @include make-col();
-  @include make-col-span(9);
+@for $i from 1 through 12 {
+  .column-#{$i} {
+    @include make-col();
+    @include make-col-span($i);
+  }
 }

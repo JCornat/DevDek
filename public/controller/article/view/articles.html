@@ -1,14 +1,12 @@
 <div ui-view="header"></div>
 
-<div class="articles" ng-controller="ArticlesCtrl as ctrl">
-    <div class="article" ng-repeat="article in ctrl.articles">
-        <img class="thumbnail" ui-sref="article({slug:'{{article.slug}}'})" ng-src="{{article.thumbnail}}" style="max-width: 100%;"
-             alt=""/>
-
-        <p class="title" ng-bind="article.title" ui-sref="article({slug:'{{article.slug}}'})"></p>
-
-        <p class="subtitle" ng-bind="article.subtitle" ui-sref="article({slug:'{{article.slug}}'})"></p>
-
-        <p class="link"><a ui-sref="article({slug:'{{article.slug}}'})">Lire plus</a></p>
+<div class="container articles" ng-controller="ArticlesCtrl as ctrl">
+    <div class="article row " ng-repeat="article in ctrl.articles">
+        <div class="column-12">
+            <img class="thumbnail" ui-sref="article({slug:'{{article.slug}}'})" ng-src="{{article.thumbnail}}" style="max-width: 100%;" alt=""/>
+            <p class="title" ng-bind="article.title" ui-sref="article({slug:'{{article.slug}}'})"></p>
+            <p class="subtitle" ng-bind="article.subtitle" ui-sref="article({slug:'{{article.slug}}'})"></p>
+            <p class="link"><a ui-sref="article({slug:'{{article.slug}}'})">Lire plus</a></p>
+        </div>
     </div>
 </div>
